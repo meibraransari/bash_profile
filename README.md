@@ -142,7 +142,27 @@ info() {
     df -h      # Show disk space usage
 }
 
-
+# Extract any type of compressed file
+extract () {
+    if [ -f $1 ] ; then
+      case $1 in
+        *.tar.bz2)   tar xjf $1     ;;
+        *.tar.gz)    tar xzf $1     ;;
+        *.bz2)       bunzip2 $1     ;;
+        *.rar)       unrar e $1     ;;
+        *.gz)        gunzip $1      ;;
+        *.tar)       tar xf $1      ;;
+        *.tbz2)      tar xjf $1     ;;
+        *.tgz)       tar xzf $1     ;;
+        *.zip)       unzip $1       ;;
+        *.Z)         uncompress $1  ;;
+        *.7z)        7z x $1        ;;
+        *)     echo "'$1' cannot be extracted via extract()" ;;
+         esac
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
 # Get basic info without typing multiple commands, you can add or remove according to your need.
 
 alias home='clear && cd /home/iansari && ll'  
@@ -151,10 +171,16 @@ alias topmem='ps -eo "rss,args" --sort=-rss | head -n 50 | awk "{hr=\$1/1024; pr
 alias topfile='du -hsx * | sort -nr | head -n 20'
 ```
 
-## Bash Profile to Manage Docker in anywhere
+## 🐳 Bash Profile to Manage Docker in anywhere
 
-[Here](./bash_profile_examples/bash_profile) are the my customized commands to manage docker in production, have a look and customize it if required.
+Here are the my customized commands to manage docker in production, have a look and customize it if required.
 
+[👉 My Bash Profile](./bash_profile_examples/bash_profile)
+
+##### 🧠 Bash Profile Alias Notes
+
+> ⚠️ **Note:** I will add more aliases in this bash profile based on my YouTube video topics.  
+> Keeping this file updated will help automate repetitive terminal tasks and keep my workflow efficient! 🚀
 
 
 ### 💼 Connect with me 👇👇 😊
