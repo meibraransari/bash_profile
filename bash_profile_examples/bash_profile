@@ -7,7 +7,9 @@
 # This is my profile script
 ###################################
 
-### Installation steps
+########################
+## Installation steps ##
+########################
 # nano ~/.bash_profile
 # source ~/.bash_profile
 alias reload='source ~/.bash_profile && source ~/.bashrc'
