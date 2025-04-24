@@ -107,27 +107,7 @@ install_basic() {
 }
 
 
-# Restart Nginx after validating of it, it will print information of action.
-nt(){
-# Perform Nginx configuration test
-sudo nginx -t > /dev/null 2>&1
-# Check if the Nginx test failed
-if [ $? -ne 0 ]; then
-    echo "Nginx test failed. Exiting script."
-    exit 1
-fi
-echo "Nginx test Passed."
-# If the test passed, reload Nginx
-sudo service nginx reload
-# Check if Nginx reload was successful
-if [ $? -eq 0 ]; then
-    echo "Nginx service reloaded successfully."
-else
-    echo "Failed to reload Nginx service."
-fi
-}
-
-# Example 3: Get basic info without typing multiple commands, you can add or remove according to your need.
+# Get basic info without typing multiple commands, you can add or remove according to your need.
 
 info() {
     echo "Check Failed Login Attempts"
@@ -141,6 +121,12 @@ info() {
     uptime     # Display system uptime
     df -h      # Show disk space usage
 }
+
+# Get basic info without typing multiple commands, you can add or remove according to your need.
+
+alias home='clear && cd /home/user && ls -alsh'  
+alias topcpu='ps -eo pcpu,args --sort=-pcpu | head -n 50 | awk '"'"'{printf("%13.2f%%\t", $1); print $2}'"'"''
+alias topmem='ps -eo "rss,args" --sort=-rss | head -n 50 | awk "{hr=\$1/1024; printf(\"%13.2fM\t\", hr); print \$2}"'
 
 # Extract any type of compressed file
 extract () {
@@ -163,12 +149,26 @@ extract () {
          echo "'$1' is not a valid file"
      fi
 }
-# Get basic info without typing multiple commands, you can add or remove according to your need.
 
-alias home='clear && cd /home/iansari && ll'  
-alias topcpu='ps -eo pcpu,args --sort=-pcpu | head -n 50 | awk '"'"'{printf("%13.2f%%\t", $1); print $2}'"'"''
-alias topmem='ps -eo "rss,args" --sort=-rss | head -n 50 | awk "{hr=\$1/1024; printf(\"%13.2fM\t\", hr); print \$2}"'
-alias topfile='du -hsx * | sort -nr | head -n 20'
+# Restart Nginx after validating of it, it will print information of action.
+nt(){
+# Perform Nginx configuration test
+sudo nginx -t > /dev/null 2>&1
+# Check if the Nginx test failed
+if [ $? -ne 0 ]; then
+    echo "Nginx test failed. Exiting script."
+    exit 1
+fi
+echo "Nginx test Passed."
+# If the test passed, reload Nginx
+sudo service nginx reload
+# Check if Nginx reload was successful
+if [ $? -eq 0 ]; then
+    echo "Nginx service reloaded successfully."
+else
+    echo "Failed to reload Nginx service."
+fi
+}
 ```
 
 ## 🐳 Bash Profile to Manage Docker in anywhere
