@@ -91,6 +91,22 @@ Unify settings across shells:
 ## 📝 Some Examples
 
 ```bash
+#!/bin/bash
+###################################
+# Author: Ibrar Ansari
+# Date: 15-05-2025
+# Version: 1
+#
+# This is my profile script
+###################################
+
+########################
+## Installation steps ##
+########################
+# nano ~/.bash_profile
+# source ~/.bash_profile
+alias reload='source ~/.bash_profile && source ~/.bashrc'
+
 # Get ip info without typing
 ipinfo(){
 curl http://ipinfo.io/$1
@@ -111,10 +127,10 @@ install_basic() {
 
 info() {
     echo "Check Failed Login Attempts"
-    cat /var/log/auth.log | grep "Failed password"
+    sudo cat /var/log/auth.log | grep "Failed password"
     
     echo -e "\nSystem-related Error and Information Messages:"
-    cat /var/log/syslog | grep -E "error|warning|info"
+    sudo cat /var/log/syslog | grep -E "error|warning|info"
 
     echo -e "\nSystem Information:"
     last -n 5  # Show last 5 logins
