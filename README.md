@@ -1,3 +1,7 @@
+## 🎬 Video Demonstration
+[![Watch on Youtube](https://i.ytimg.com/vi/hPpfOEnI470/maxresdefault.jpg)](https://youtu.be/hPpfOEnI470)
+
+
 # 🚀 Understanding Bash Profile and Linux Startup
 
 ## What is a Bash Profile? 🖥️
